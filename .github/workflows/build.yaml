@@ -1,0 +1,22 @@
+name: Build LBP for Linux x64
+on: push
+jobs:
+  rspec:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: "Setup Node.js"
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: "Install deps"
+        run: "npm i"
+      - name: "Build"
+        run: "npm run build"
+      - name: "Pack"
+        run: "npm run pack"
+      - name: "Upload artifact"
+        uses: actions/upload-artifact@v3
+        with:
+          name: lbp-x64
+          path: dist/lbp-x64
