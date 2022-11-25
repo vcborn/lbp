@@ -1,6 +1,8 @@
 {
   "name": "lbp",
   "version": "1.0.0",
+  "author": "wamo <ainznino@pm.me>",
+  "repository": "https://github.com/vcborn/lbp",
   "description": "Tools for those who find the Live Build system too complex",
   "main": "main.js",
   "license": "Apache-2.0",
