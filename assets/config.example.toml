@@ -1,28 +1,39 @@
+# Distribution Name
 name = ""
 
 [debian]
+# Debian Codename
 dist = "bullseye"
+# CPU Architecture (amd64 | arm64 | i386 | ...)
 arch = "amd64"
+# APT Component areas
 areas = "main contrib non-free"
 
 [mirror]
+# Debian repository mirror URL
 main = "http://ftp.jp.debian.org/debian/"
+# Debian Security repository mirror URL
 security = "http://security.debian.org/"
 
 [publisher]
+# Information about the creator (i.e., you)
 name = ""
 website = ""
 email = ""
 
 [label]
+# Label of the HDD image to be created or the name of the volume of the ISO image
 hdd = ""
 iso = ""
 
 [locale]
+# Default display language
 lang = "en_US"
+# Default keyboard layout
 layouts = "us"
 
 [packages]
+  # The original APT repository is added here.
   [[packages.repo]]
     name = ""
     uri = ""
