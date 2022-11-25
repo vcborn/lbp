@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Tools for those who find the Live Build system too complex",
   "main": "main.js",
-  "license": "MIT",
+  "license": "Apache-2.0",
   "bin": {
     "lbp": "./build/main.js"
   },
