@@ -21,3 +21,10 @@ iso = ""
 [locale]
 lang = "en_US"
 layouts = "us"
+
+[packages]
+  [[packages.repo]]
+    name = ""
+    uri = ""
+    dist = ""
+    key = ""
