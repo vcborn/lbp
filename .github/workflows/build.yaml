@@ -1,7 +1,7 @@
 name: Build LBP for Linux x64
 on: push
 jobs:
-  rspec:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -11,6 +11,8 @@ jobs:
           node-version: 18
       - name: "Install deps"
         run: "npm i"
+      - name: "Install tsc"
+        run: "npm i -g tsc"
       - name: "Build"
         run: "npm run build"
       - name: "Pack"
