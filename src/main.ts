@@ -142,7 +142,7 @@ cli.command('init', 'Init Project').action((options) => {
         console.log('config already exists.')
       }
     } else {
-      fs.copyFileSync(path.join(__dirname, "assets/config.example.toml"), "config.toml")
+      fs.copyFileSync(path.join(__dirname, "../assets/config.example.toml"), "config.toml")
       if (!fs.existsSync("lbp")) {
         fs.mkdirSync('lbp')
         fs.mkdirSync('lbp/local-pkgs')
