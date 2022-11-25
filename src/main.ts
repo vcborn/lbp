@@ -65,12 +65,11 @@ const setConfig = async (q?: boolean) => {
       execSync(`lb config ${options.join(" ")} ${q ? "--quiet" : ""}`)
       rmFiles("config/includes.chroot")
       rmFiles("config/packages.chroot")
+      rmFiles("config/package-lists")
       rmFiles("config/archives")
       copyFiles("lbp/root", "config/includes.chroot")
-      copyFiles("lbp/packages", "config/packages.chroot")
-      if (!fs.existsSync("config/package-lists/live.list.chroot")) {
-        fs.writeFileSync(`config/package-lists/live.list.chroot`, "live-boot\nlive-config\nlive-config-systemd")
-      }
+      copyFiles("lbp/local-pkgs", "config/packages.chroot")
+      copyFiles("lbp/remote-pkgs", "config/package-lists")
       data.packages.repo.map((d) => {
         fs.writeFileSync(`config/archives/${d.name}.list.binary`, `deb ${d.uri} ${d.dist} main`)
         fs.copyFileSync(`config/archives/${d.name}.list.binary`, `config/archives/${d.name}.list.chroot`)
@@ -145,7 +144,9 @@ cli.command('init', 'Init Project').action((options) => {
       fs.copyFileSync(path.join(__dirname, '/config.example.toml'), 'config.toml')
       if (!fs.existsSync("lbp")) {
         fs.mkdirSync('lbp')
-        fs.mkdirSync('lbp/packages')
+        fs.mkdirSync('lbp/local-pkgs')
+        fs.mkdirSync('lbp/remote-pkgs')
+        fs.writeFileSync(`lbp/remote-pkgs/live.list.chroot`, "live-boot\nlive-config\nlive-config-systemd")
         fs.mkdirSync('lbp/root')
       }
       execSync(`lb config ${options.quiet ? "--quiet" : ""}`)
