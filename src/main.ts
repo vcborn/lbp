@@ -34,6 +34,7 @@ const setConfig = async (q?: boolean) => {
   if (checkConfig()) {
     const data = readConfig()
     if (data) {
+      execSync(`sudo lb clean ${q ? "--quiet" : ""}`)
       const options = [
         `-a "${data.debian.arch}"`,
         `--archive-areas "${data.debian.areas}"`,
@@ -191,6 +192,12 @@ cli.command("build", "Build ISO").action((options) => {
   if (checkConfig()) {
     setConfig()
     execSync(`sudo lb build ${options.quiet ? "--quiet" : ""}`)
+  }
+})
+
+cli.command("clean", "Clean current dir").action((options) => {
+  if (checklb()) {
+    execSync(`sudo lb clean ${options.quiet ? "--quiet" : ""}`)
   }
 })
 
