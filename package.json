@@ -27,6 +27,7 @@
   },
   "pkg": {
     "scripts": "build/**/*.js",
+    "assets": "assets/**/*",
     "outputPath": "dist",
     "targets": [
       "node18-linux-x64",

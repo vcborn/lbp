@@ -142,36 +142,7 @@ cli.command('init', 'Init Project').action((options) => {
         console.log('config already exists.')
       }
     } else {
-      fs.writeFileSync('config.toml', 'name = ""\
-\
-      [debian]\
-      dist = "bullseye"\
-      arch = "amd64"\
-      areas = "main contrib non-free"\
-      \
-      [mirror]\
-      main = "http://ftp.jp.debian.org/debian/"\
-      security = "http://security.debian.org/"\
-      \
-      [publisher]\
-      name = ""\
-      website = ""\
-      email = ""\
-      \
-      [label]\
-      hdd = ""\
-      iso = ""\
-      \
-      [locale]\
-      lang = "en_US"\
-      layouts = "us"\
-      \
-      [packages]\
-        [[packages.repo]]\
-          name = ""\
-          uri = ""\
-          dist = ""\
-          key = ""')
+      fs.copyFileSync(path.join(__dirname, "/config.example.toml"), "config.toml")
       if (!fs.existsSync("lbp")) {
         fs.mkdirSync('lbp')
         fs.mkdirSync('lbp/local-pkgs')
