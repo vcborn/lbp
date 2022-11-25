@@ -11,8 +11,6 @@ jobs:
           node-version: 18
       - name: "Install deps"
         run: "npm i"
-      - name: "Install tsc"
-        run: "npm i -g tsc"
       - name: "Build"
         run: "npm run build"
       - name: "Pack"
